@@ -1,4 +1,4 @@
-package com.m6world.tari_labs.api._contracts
+package com.m6world.tari_labs.api.contracts
 
 import com.m6world.tari_labs.api.models.AuthResponse
 import io.reactivex.Observable

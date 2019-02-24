@@ -1,14 +1,13 @@
-package com.m6world.tari_labs.features
+package com.m6world.tari_labs.features._home
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.google.zxing.integration.android.IntentIntegrator
-import com.m6world.tari_labs.CaptureActivityAnyOrientation
-import com.m6world.tari_labs.MainActivity
+import com.m6world.tari_labs.features._qr_code.CaptureActivityAnyOrientation
 import com.m6world.tari_labs.R
 import com.m6world.tari_labs.api.models.AuthResponse
-import com.m6world.tari_labs.commons.BaseFragment
+import com.m6world.tari_labs.features.BaseFragment
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.home_fragment.*
 
@@ -17,7 +16,8 @@ class HomeFragment : BaseFragment() {
         return R.layout.home_fragment
     }
 
-    var viewModel: HomeViewModel = HomeViewModel()
+    var viewModel: HomeViewModel =
+        HomeViewModel()
 
     var scanContent: String? = null
     var scanFormat: String? = null

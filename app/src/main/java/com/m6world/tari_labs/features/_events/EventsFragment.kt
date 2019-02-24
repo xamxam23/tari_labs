@@ -3,9 +3,8 @@ package com.m6world.tari_labs.features._events
 import android.os.Bundle
 import android.view.View
 import com.m6world.tari_labs.R
-import com.m6world.tari_labs.api.models.AuthResponse
 import com.m6world.tari_labs.api.models.EventCheckinsResponse
-import com.m6world.tari_labs.commons.BaseFragment
+import com.m6world.tari_labs.features.BaseFragment
 import com.m6world.tari_labs.commons.JacksonMapper
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.events_fragment.*

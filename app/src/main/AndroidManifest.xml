@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CaptureActivityAnyOrientation" />
+        <activity android:name=".features._qr_code.CaptureActivityAnyOrientation" />
     </application>
 
 </manifest>

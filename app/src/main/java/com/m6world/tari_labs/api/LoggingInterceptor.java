@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 public class LoggingInterceptor implements Interceptor {
-    String requestClassName, responseClassName;
+    private String requestClassName = "", responseClassName = "";
 
     public LoggingInterceptor(String requestClassName, String responseClassName) {
         this.requestClassName = requestClassName;
@@ -19,14 +19,24 @@ public class LoggingInterceptor implements Interceptor {
     public LoggingInterceptor() {
     }
 
+    public void setRequestClassName(String requestClassName) {
+        this.requestClassName = requestClassName;
+    }
+
+    public void setResponseClassName(String responseClassName) {
+        this.responseClassName = responseClassName;
+    }
+
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
         long t1 = System.nanoTime();
         Log.i("x-i", String.format("Request %s", request.url()));
         String req = bodyToString(request.body());
+        if (req == null || req.isEmpty())
+            if (request.headers() != null)
+                req = request.headers().toString();
         log(requestClassName, req);
-
         Log.d("x-i", "Request(" + requestClassName + ") = " + req);
         Response response = chain.proceed(request);
 
@@ -46,8 +56,8 @@ public class LoggingInterceptor implements Interceptor {
             final Buffer buffer = new Buffer();
             copy.writeTo(buffer);
             return buffer.readUtf8();
-        } catch (final IOException e) {
-            return "did not work";
+        } catch (final NullPointerException | IOException e) {
+            return "";
         }
     }
 

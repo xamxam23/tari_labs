@@ -17,22 +17,23 @@ import java.util.concurrent.TimeUnit;
 
 import static com.m6world.tari_labs.api.TimeOutParameters.*;
 
+@Deprecated
 public class FastAndroidNetworking {
     private static JacksonParserFactory jaksonParser;
     private static OkHttpClient.Builder httpBuilder = new OkHttpClient().newBuilder()
             .addInterceptor(new LoggingInterceptor())
-            .connectTimeout(CONNECT_DEFAULT, TimeUnit.SECONDS)
-            .writeTimeout(WRITE_DEFAULT, TimeUnit.SECONDS)
-            .readTimeout(READ_DEFAULT, TimeUnit.SECONDS);
+            .connectTimeout(Companion.getCONNECT_DEFAULT(), TimeUnit.SECONDS)
+            .writeTimeout(Companion.getWRITE_DEFAULT(), TimeUnit.SECONDS)
+            .readTimeout(Companion.getREAD_DEFAULT(), TimeUnit.SECONDS);
 
     public static boolean shouldRecordResponse = true;
 
     public static OkHttpClient.Builder getRecorderOkHttpClient(String requestClassName, String responseClassName) {
         return new OkHttpClient().newBuilder()
                 .addInterceptor(new LoggingInterceptor(requestClassName, responseClassName))
-                .connectTimeout(CONNECT_DEFAULT, TimeUnit.SECONDS)
-                .writeTimeout(WRITE_DEFAULT, TimeUnit.SECONDS)
-                .readTimeout(READ_DEFAULT, TimeUnit.SECONDS);
+                .connectTimeout(Companion.getCONNECT_DEFAULT(), TimeUnit.SECONDS)
+                .writeTimeout(Companion.getWRITE_DEFAULT(), TimeUnit.SECONDS)
+                .readTimeout(Companion.getREAD_DEFAULT(), TimeUnit.SECONDS);
     }
 
     public static <T> ANResponse<T> post(String url, Object requestObject, Class<T> responseClass) {
@@ -105,8 +106,8 @@ public class FastAndroidNetworking {
 
     private static void setTimeOutParameters(OkHttpClient.Builder builder, TimeOutParameters timeOutParameters) {
         if (timeOutParameters != null)
-            builder.connectTimeout(timeOutParameters.connect, TimeUnit.SECONDS)
-                    .readTimeout(timeOutParameters.read, TimeUnit.SECONDS)
-                    .writeTimeout(timeOutParameters.write, TimeUnit.SECONDS);
+            builder.connectTimeout(timeOutParameters.getConnect(), TimeUnit.SECONDS)
+                    .readTimeout(timeOutParameters.getRead(), TimeUnit.SECONDS)
+                    .writeTimeout(timeOutParameters.getWrite(), TimeUnit.SECONDS);
     }
 }

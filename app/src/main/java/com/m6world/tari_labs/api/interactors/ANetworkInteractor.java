@@ -1,4 +1,4 @@
-package com.m6world.tari_labs.api._interactors;
+package com.m6world.tari_labs.api.interactors;
 
 import com.androidnetworking.common.ANResponse;
 import com.m6world.tari_labs.api.TimeOutParameters;

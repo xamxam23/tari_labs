@@ -13,7 +13,7 @@ import com.m6world.tari_labs.commons.event_bus.ShowProgress
 import com.m6world.tari_labs.commons.transformations.TransformFactory
 import com.m6world.tari_labs.features.AccountsFragment
 import com.m6world.tari_labs.features._events.EventsFragment
-import com.m6world.tari_labs.features.HomeFragment
+import com.m6world.tari_labs.features._home.HomeFragment
 import com.m6world.tari_labs.features.TicketsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus

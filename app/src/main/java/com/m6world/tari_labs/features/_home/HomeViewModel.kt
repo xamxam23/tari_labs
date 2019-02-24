@@ -1,7 +1,7 @@
-package com.m6world.tari_labs.features
+package com.m6world.tari_labs.features._home
 
-import com.m6world.tari_labs.api._contracts.IAuthInteractor
-import com.m6world.tari_labs.api._interactors.AuthInteractor
+import com.m6world.tari_labs.api.contracts.IAuthInteractor
+import com.m6world.tari_labs.api.interactors.AuthInteractor
 import com.m6world.tari_labs.api.models.AuthResponse
 import io.reactivex.Observable
 
