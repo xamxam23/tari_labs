@@ -8,16 +8,17 @@ import com.m6world.tari_labs.features._qr_code.CaptureActivityAnyOrientation
 import com.m6world.tari_labs.R
 import com.m6world.tari_labs.api.models.AuthResponse
 import com.m6world.tari_labs.features.BaseFragment
+import com.m6world.tari_labs.features._abstract.IHomeViewModel
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.home_fragment.*
+import javax.inject.Inject
 
 class HomeFragment : BaseFragment() {
+    @set:Inject var viewModel: IHomeViewModel? = null
+
     override fun getLayout(): Int {
         return R.layout.home_fragment
     }
-
-    var viewModel: HomeViewModel =
-        HomeViewModel()
 
     var scanContent: String? = null
     var scanFormat: String? = null
@@ -40,7 +41,7 @@ class HomeFragment : BaseFragment() {
     }
 
     fun doAuth() {
-        execute(viewModel.getAuthToken(), object : Consumer<AuthResponse> {
+        execute(viewModel!!.getAuthToken(), object : Consumer<AuthResponse> {
             override fun accept(value: AuthResponse) {
                 setAuthResponse(value)
                 authTextView.setText("access: " + value.accessToken + "\n\nrefresh: " + value.refreshToken)
@@ -57,7 +58,7 @@ class HomeFragment : BaseFragment() {
         else {
             var accessToken = authResponse?.accessToken!!
             var refreshToken = authResponse?.refreshToken!!
-            execute(viewModel.getAuthToken(accessToken, refreshToken),
+            execute(viewModel!!.getAuthToken(accessToken, refreshToken),
                 object : Consumer<AuthResponse> {
                     override fun accept(value: AuthResponse) {
                         authResponse = value

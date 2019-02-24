@@ -15,13 +15,14 @@ import com.m6world.tari_labs.features.AccountsFragment
 import com.m6world.tari_labs.features._events.EventsFragment
 import com.m6world.tari_labs.features._home.HomeFragment
 import com.m6world.tari_labs.features.TicketsFragment
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.lang.Exception
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
     var authResponse: AuthResponse? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

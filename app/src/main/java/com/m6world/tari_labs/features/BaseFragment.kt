@@ -14,13 +14,14 @@ import com.m6world.tari_labs.R
 import com.m6world.tari_labs.api.models.AuthResponse
 import com.m6world.tari_labs.commons.event_bus.HideProgress
 import com.m6world.tari_labs.commons.event_bus.ShowProgress
+import dagger.android.support.DaggerFragment
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import org.greenrobot.eventbus.EventBus
 
-abstract class BaseFragment : Fragment(), View.OnClickListener {
+abstract class BaseFragment : DaggerFragment(), View.OnClickListener {
     var shake: Animation? = null
     var shake_long: Animation? = null
 
