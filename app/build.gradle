@@ -8,7 +8,7 @@ android {
     defaultConfig {
         applicationId "com.m6world.tari_labs"
         minSdkVersion 21
-        targetSdkVersion 21
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -22,6 +22,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.nabinbhandari.android:permissions:3.8'
     //dagger
     implementation "com.google.dagger:dagger:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
